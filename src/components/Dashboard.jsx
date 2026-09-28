@@ -72,7 +72,16 @@ const Dashboard = () => {
         </h3>
 
         {loading ? (
-          <p>Loading tasks...</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+            {[1, 2].map((n) => (
+              <div key={n} className="form-card" style={{ maxWidth: '100%', margin: 0 }}>
+                <div className="skeleton skeleton-title"></div>
+                <div className="skeleton skeleton-text"></div>
+                <div className="skeleton skeleton-text" style={{ width: '80%' }}></div>
+                <div className="skeleton skeleton-btn" style={{ marginTop: '16px' }}></div>
+              </div>
+            ))}
+          </div>
         ) : error ? (
           <div className="api-error-banner">{error}</div>
         ) : (

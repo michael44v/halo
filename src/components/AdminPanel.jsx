@@ -11,6 +11,7 @@ const AdminPanel = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
+  const [deletingTaskId, setDeletingTaskId] = useState(null);
 
   const [newTask, setNewTask] = useState({
     title: '',
@@ -96,9 +97,7 @@ const AdminPanel = () => {
     }
   };
 
-  const handleDeleteTask = async (taskId) => {
-    if (!window.confirm('Are you sure you want to delete this task?')) return;
-
+  const confirmDeleteTask = async (taskId) => {
     try {
       const res = await fetch('http://127.0.0.1:8000/admin.php?action=delete_task', {
         method: 'POST',
@@ -112,6 +111,7 @@ const AdminPanel = () => {
       const data = await res.json();
       if (data.status === 'success') {
         setMsg('Task deleted successfully');
+        setDeletingTaskId(null);
         fetchAdminData();
       } else {
         setError(data.message || 'Failed to delete task');
@@ -208,12 +208,30 @@ const AdminPanel = () => {
                 <td>{t.description}</td>
                 <td><code>{t.hashtags}</code></td>
                 <td>
-                  <button
-                    onClick={() => handleDeleteTask(t.id)}
-                    style={{ background: 'var(--danger-bg)', color: 'var(--danger-color)', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-                  >
-                    Delete
-                  </button>
+                  {deletingTaskId === t.id ? (
+                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                      <span style={{ fontSize: '12px', color: 'var(--danger-color)', fontWeight: 'bold' }}>Confirm?</span>
+                      <button
+                        onClick={() => confirmDeleteTask(t.id)}
+                        style={{ background: 'var(--danger-color)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold' }}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => setDeletingTaskId(null)}
+                        style={{ background: '#e2e8f0', color: '#334155', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setDeletingTaskId(t.id)}
+                      style={{ background: 'var(--danger-bg)', color: 'var(--danger-color)', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
