@@ -31,7 +31,7 @@ const AdminPanel = () => {
   const fetchAdminData = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/admin.php?action=get_submissions');
+      const res = await fetch('/api/admin.php?action=get_submissions');
       const data = await res.json();
       if (data.status === 'success') {
         setSubmissions(data.submissions || []);
@@ -48,7 +48,7 @@ const AdminPanel = () => {
 
   const handleReviewProof = async (submissionId, status) => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/admin.php?action=review_proof', {
+      const res = await fetch('/api/admin.php?action=review_proof', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -74,7 +74,7 @@ const AdminPanel = () => {
     if (!newTask.title || !newTask.description) return;
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/admin.php?action=add_task', {
+      const res = await fetch('/api/admin.php?action=add_task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -99,7 +99,7 @@ const AdminPanel = () => {
 
   const confirmDeleteTask = async (taskId) => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/admin.php?action=delete_task', {
+      const res = await fetch('/api/admin.php?action=delete_task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

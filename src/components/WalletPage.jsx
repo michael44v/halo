@@ -82,7 +82,7 @@ const WalletPage = () => {
   const fetchWallet = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/wallet.php?user_id=${user.id}`);
+      const res = await fetch(`/api/wallet.php?user_id=${user.id}`);
       const data = await res.json();
       if (data.status === 'success' && data.wallet) {
         setAccountName(data.wallet.account_name || user.full_name);
@@ -107,7 +107,7 @@ const WalletPage = () => {
     setSuccessMsg('');
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/wallet.php', {
+      const res = await fetch('/api/wallet.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

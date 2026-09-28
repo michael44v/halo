@@ -23,7 +23,7 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/tasks.php?user_id=${user.id}`);
+      const res = await fetch(`/api/tasks.php?user_id=${user.id}`);
       const data = await res.json();
       if (data.status === 'success') {
         setTasks(data.tasks);

@@ -26,7 +26,7 @@ const TaskSubmission = () => {
   const fetchTaskDetails = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/tasks.php?user_id=${user.id}`);
+      const res = await fetch(`/api/tasks.php?user_id=${user.id}`);
       const data = await res.json();
       if (data.status === 'success') {
         const currentTask = data.tasks.find(t => t.id === parseInt(taskId));
@@ -58,7 +58,7 @@ const TaskSubmission = () => {
     setSuccessMsg('');
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/submit_proof.php', {
+      const res = await fetch('/api/submit_proof.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

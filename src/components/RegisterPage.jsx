@@ -34,7 +34,7 @@ const RegisterPage = () => {
     setError('');
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/register.php', {
+      const res = await fetch('/api/register.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ const RegisterPage = () => {
     setError('');
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/verify_payment.php', {
+      const res = await fetch('/api/verify_payment.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: paymentData.user_id })
@@ -88,7 +88,7 @@ const RegisterPage = () => {
   const handleModalClose = async () => {
     if (paymentData && paymentData.email && paymentData.temp_password) {
       try {
-        const res = await fetch('http://127.0.0.1:8000/login.php', {
+        const res = await fetch('/api/login.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
