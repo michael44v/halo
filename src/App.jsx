@@ -22,8 +22,12 @@ function Navigation() {
   return (
     <header className="app-header">
       <Link to="/" className="app-logo">
-        <span className="logo-badge">HSG</span>
-        <span>Halo</span>
+        <img
+          src="/logo.jpg"
+          alt="Survey Giveaway Logo"
+          style={{ height: '38px', borderRadius: '6px', objectFit: 'contain' }}
+        />
+        <span>Survey Giveaway</span>
       </Link>
       <nav className="nav-links">
         <Link to="/" className="nav-link">Home</Link>

@@ -16,7 +16,11 @@ const LandingPage = () => {
       {/* SECTION 1: HERO HEADER */}
       <section className="hero-section">
         <div style={{ marginBottom: '16px' }}>
-          <span className="logo-badge" style={{ fontSize: '24px', padding: '6px 16px' }}>HSG</span>
+          <img
+            src="/logo.jpg"
+            alt="Survey Giveaway Hero Logo"
+            style={{ maxHeight: '120px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+          />
         </div>
         <h1 className="hero-title">Help train the next biggest AI model</h1>
         <p className="hero-subtitle">
