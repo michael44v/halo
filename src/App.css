@@ -1,9 +1,11 @@
 /* Halo Survey Giveaway Stylesheet */
 
 :root {
-  --primary-color: #7b2cbf;
-  --primary-hover: #6a24a6;
-  --primary-bg-light: rgba(123, 44, 191, 0.08);
+  --primary-color: rgb(0, 38, 136);
+  --primary-hover: rgb(0, 25, 95);
+  --primary-bg-light: rgba(0, 38, 136, 0.08);
+  --accent-yellow: rgb(252, 255, 0);
+  --accent-yellow-hover: rgb(225, 228, 0);
   --success-color: #10b981;
   --success-bg: rgba(16, 185, 129, 0.12);
   --warning-color: #f59e0b;
@@ -14,7 +16,7 @@
   --text-secondary: #4b5563;
   --border-color: #e5e7eb;
   --card-bg: #ffffff;
-  --bg-color: #f9fafb;
+  --bg-color: #f8fafc;
 }
 
 body {
@@ -211,12 +213,13 @@ body {
 }
 
 .feature-badge {
-  background-color: #f3e8ff;
+  background-color: var(--accent-yellow);
   color: var(--primary-color);
   padding: 10px 20px;
   border-radius: 30px;
   font-weight: 700;
   font-size: 15px;
+  border: 1px solid rgba(0, 38, 136, 0.2);
 }
 
 .badge-info {
@@ -232,20 +235,21 @@ body {
 }
 
 .btn-cta {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--accent-yellow);
+  color: var(--primary-color);
   font-size: 20px;
   font-weight: 800;
   padding: 16px 40px;
   border-radius: 12px;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 4px 14px rgba(123, 44, 191, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 38, 136, 0.25);
   transition: all 0.2s;
+  border: 1px solid rgba(0, 38, 136, 0.15);
 }
 
 .btn-cta:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--accent-yellow-hover);
   transform: translateY(-2px);
 }
 

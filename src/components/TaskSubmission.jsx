@@ -95,7 +95,11 @@ const TaskSubmission = () => {
         </div>
 
         {loading ? (
-          <p>Loading task...</p>
+          <div>
+            <div className="skeleton skeleton-title"></div>
+            <div className="skeleton skeleton-text" style={{ height: '40px', marginBottom: '16px' }}></div>
+            <div className="skeleton skeleton-btn"></div>
+          </div>
         ) : error ? (
           <div className="api-error-banner">{error}</div>
         ) : (
