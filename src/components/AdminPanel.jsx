@@ -190,59 +190,69 @@ const AdminPanel = () => {
 
       <div className="form-card" style={{ maxWidth: '100%', marginBottom: '32px' }}>
         <h3 style={{ margin: '0 0 16px', fontSize: '18px' }}>Active Daily Tasks</h3>
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Step #</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Hashtags</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((t) => (
-              <tr key={t.id}>
-                <td><strong>Task {t.step_number}</strong></td>
-                <td>{t.title}</td>
-                <td>{t.description}</td>
-                <td><code>{t.hashtags}</code></td>
-                <td>
-                  {deletingTaskId === t.id ? (
-                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                      <span style={{ fontSize: '12px', color: 'var(--danger-color)', fontWeight: 'bold' }}>Confirm?</span>
-                      <button
-                        onClick={() => confirmDeleteTask(t.id)}
-                        style={{ background: 'var(--danger-color)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold' }}
-                      >
-                        Yes
-                      </button>
-                      <button
-                        onClick={() => setDeletingTaskId(null)}
-                        style={{ background: '#e2e8f0', color: '#334155', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => setDeletingTaskId(t.id)}
-                      style={{ background: 'var(--danger-bg)', color: 'var(--danger-color)', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-                    >
-                      Delete
-                    </button>
-                  )}
-                </td>
+        {loading ? (
+          <div style={{ padding: '12px' }}>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+          </div>
+        ) : (
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Step #</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Hashtags</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {tasks.map((t) => (
+                <tr key={t.id}>
+                  <td><strong>Task {t.step_number}</strong></td>
+                  <td>{t.title}</td>
+                  <td>{t.description}</td>
+                  <td><code>{t.hashtags}</code></td>
+                  <td>
+                    {deletingTaskId === t.id ? (
+                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                        <span style={{ fontSize: '12px', color: 'var(--danger-color)', fontWeight: 'bold' }}>Confirm?</span>
+                        <button
+                          onClick={() => confirmDeleteTask(t.id)}
+                          style={{ background: 'var(--danger-color)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold' }}
+                        >
+                          Yes
+                        </button>
+                        <button
+                          onClick={() => setDeletingTaskId(null)}
+                          style={{ background: '#e2e8f0', color: '#334155', border: 'none', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => setDeletingTaskId(t.id)}
+                        style={{ background: 'var(--danger-bg)', color: 'var(--danger-color)', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       <div className="form-card" style={{ maxWidth: '100%' }}>
         <h3 style={{ margin: '0 0 16px', fontSize: '18px' }}>User Task Proof Submissions</h3>
         {loading ? (
-          <p>Loading submissions...</p>
+          <div style={{ padding: '12px' }}>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+          </div>
         ) : submissions.length === 0 ? (
           <p style={{ color: 'var(--text-secondary)' }}>No task proofs submitted yet.</p>
         ) : (
