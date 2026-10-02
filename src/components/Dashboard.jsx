@@ -108,15 +108,15 @@ const Dashboard = () => {
                     </span>
                     {!isUnlocked ? (
                       <span style={{ fontSize: '12px', background: '#e2e8f0', color: '#64748b', padding: '4px 8px', borderRadius: '12px', fontWeight: '600' }}>
-                        🔒 Locked
+                        Locked
                       </span>
                     ) : isApproved ? (
                       <span style={{ fontSize: '12px', background: 'var(--success-bg)', color: 'var(--success-color)', padding: '4px 8px', borderRadius: '12px', fontWeight: '700' }}>
-                        ✓ Approved
+                        Approved
                       </span>
                     ) : isPending ? (
                       <span style={{ fontSize: '12px', background: 'var(--danger-bg)', color: 'var(--danger-color)', padding: '4px 8px', borderRadius: '12px', fontWeight: '700' }}>
-                        ⏳ Pending Approval
+                        Pending Approval
                       </span>
                     ) : (
                       <span style={{ fontSize: '12px', background: '#dbeafe', color: '#1e40af', padding: '4px 8px', borderRadius: '12px', fontWeight: '700' }}>
@@ -132,7 +132,7 @@ const Dashboard = () => {
 
                   {task.proof_link && (
                     <div className={`proof-box ${isApproved ? 'approved' : 'pending'}`}>
-                      {isPending ? '🔴 Submitted link: ' : '🟢 Approved link: '}
+                      {isPending ? 'Submitted link: ' : 'Approved link: '}
                       <a href={task.proof_link} target="_blank" rel="noreferrer" style={{ color: 'inherit', wordBreak: 'break-all' }}>
                         {task.proof_link}
                       </a>
