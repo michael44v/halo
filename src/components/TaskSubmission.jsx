@@ -127,7 +127,7 @@ const TaskSubmission = () => {
                   border: '2px solid'
                 }}
               >
-                {isApproved ? '🟢 Approved Proof Link: ' : '🔴 Submitted Proof Link (Pending Admin Approval): '}
+                {isApproved ? 'Approved Proof Link: ' : 'Submitted Proof Link (Pending Admin Approval): '}
                 <br />
                 <a href={proofLink} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 'bold' }}>
                   {proofLink}
